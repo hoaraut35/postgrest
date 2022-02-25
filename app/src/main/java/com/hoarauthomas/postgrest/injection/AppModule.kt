@@ -20,7 +20,7 @@ object AppModule {
     @Provides
     @Singleton
     fun provideRetrofit(): Postgrestapi = Retrofit.Builder()
-        .baseUrl("localhost:3000/")
+        .baseUrl("http://10.0.2.2:3000/")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
         .create(Postgrestapi::class.java)

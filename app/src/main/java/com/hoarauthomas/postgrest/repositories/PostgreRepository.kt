@@ -1,5 +1,6 @@
 package com.hoarauthomas.postgrest.repositories
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.hoarauthomas.postgrest.api.Postgrestapi
@@ -14,22 +15,28 @@ import javax.inject.Singleton
 @Singleton
 class PostgreRepository @Inject constructor(private val postgresql: Postgrestapi) {
 
-    private var mutableLiveDataOfCars = MutableLiveData<CarsResponse>()
+    private var mutableLiveDataOfCars = MutableLiveData<List<CarsResponse>>()
 
-    fun liveCars(): LiveData<CarsResponse> {
+    fun liveCars(): LiveData<List<CarsResponse>> {
         return mutableLiveDataOfCars
     }
 
     fun getCars() {
-        postgresql.getAllCars().enqueue(object : Callback<CarsResponse> {
-            override fun onResponse(call: Call<CarsResponse>, response: Response<CarsResponse>) {
+        postgresql.getAllCars().enqueue(object : Callback<List<CarsResponse>> {
+
+
+            override fun onResponse(
+                call: Call<List<CarsResponse>>,
+                response: Response<List<CarsResponse>>
+            ) {
                 if (response.isSuccessful) {
+                    Log.i("[API]", "reponse : " + response.body().toString())
                     mutableLiveDataOfCars.value = response.body()
                 }
             }
 
-            override fun onFailure(call: Call<CarsResponse>, t: Throwable) {
-                //TODO("Not yet implemented")
+            override fun onFailure(call: Call<List<CarsResponse>>, t: Throwable) {
+                Log.i("[API]", "Message : " + t.message.toString())
             }
 
         }
