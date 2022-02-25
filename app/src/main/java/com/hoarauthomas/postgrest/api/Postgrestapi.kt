@@ -8,5 +8,5 @@ import retrofit2.http.Query
 interface Postgrestapi {
 
     @GET("cars")
-    fun getAllCars(@Query("address") address: String): Call<CarsResponse>
+    fun getAllCars(): Call<CarsResponse>
 }
