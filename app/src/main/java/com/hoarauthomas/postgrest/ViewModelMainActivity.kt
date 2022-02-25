@@ -3,6 +3,7 @@ package com.hoarauthomas.postgrest
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.hoarauthomas.postgrest.models.CarsResponse
+import com.hoarauthomas.postgrest.models.CarsResponseItem
 import com.hoarauthomas.postgrest.repositories.PostgreRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -15,7 +16,7 @@ class ViewModelMainActivity @Inject constructor(private val postgreRepository: P
         postgreRepository.getCars()
     }
 
-    fun liveCars(): LiveData<List<CarsResponse>>{
+    fun liveCars(): LiveData<List<CarsResponseItem>>{
         return postgreRepository.liveCars()
     }
 

@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
             if (it.isNotEmpty()){
 
                 it.forEachIndexed { index, carsResponse ->
-                    text.append(it[0].carsResponse?.get(index)?.ident.toString())
+                    text.append(it[index].maker)
                 }
 
 
