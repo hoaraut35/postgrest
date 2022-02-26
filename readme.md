@@ -1,6 +1,6 @@
 # PostgreSQL with Android 
 
-![start image](https://github.com/hoaraut35/P9/blob/main/blob/mockup.JPG)
+![start image](https://github.com/hoaraut35/postgrest/blob/main/blob/logo.png)
 
 
 Demo project to connect Android with PostgreSQL database
